@@ -13,6 +13,8 @@ export default defineConfig({
       insertTypesEntry: true,
       include: ['src'],
       exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'vite.config.ts'],
+      rollupTypes: true,
+      staticImport: true,
     }),
   ],
   resolve: {
