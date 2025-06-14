@@ -1,10 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import dts from 'vite-plugin-dts'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      tsconfigPath: resolve(__dirname, './tsconfig.build.json'),
+      outDir: 'dist',
+      insertTypesEntry: true,
+      include: ['src'],
+      exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'vite.config.ts'],
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -30,7 +40,6 @@ export default defineConfig({
         preserveModulesRoot: 'src',
       },
     },
-    sourcemap: true,
     minify: 'esbuild',
     target: 'es2015',
   },
