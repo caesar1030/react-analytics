@@ -1,5 +1,5 @@
 {
-  "name": "@caesar/react-analytics",
+  "name": "@caesar1030/react-analytics",
   "publishConfig": {
     "access": "public"
   },
@@ -15,10 +15,12 @@
     "gtag"
   ],
   "type": "module",
+  "main": "dist/react-analytics.es.js",
   "module": "dist/react-analytics.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {
@@ -50,7 +52,12 @@
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/park/react-analytics.git"
+    "url": "git+https://github.com/caesar1030/react-analytics.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caesar1030/react-analytics/issues"
+  },
+  "homepage": "https://github.com/caesar1030/react-analytics#readme",
+  "author": "caesar"
 }
