@@ -1,5 +1,8 @@
 {
-  "name": "@park/react-analytics",
+  "name": "@caesar/react-analytics",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "Analytics library for React applications",
   "keywords": [
@@ -12,7 +15,6 @@
     "gtag"
   ],
   "type": "module",
-  "main": "dist/react-analytics.umd.js",
   "module": "dist/react-analytics.es.js",
   "types": "dist/index.d.ts",
   "files": [
