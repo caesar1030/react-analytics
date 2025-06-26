@@ -15,14 +15,14 @@ export function useGAEvent({
 }: UseGAEventProps) {
   const { ga4Event } = useGA()
 
-  const handleClick = (
+  const handleEvent = (
     e: MouseEvent<Element>,
-    originalOnClick?: (e: MouseEvent<Element>) => void,
+    originalHandler?: (e: MouseEvent<Element>) => void,
   ) => {
     if (enabled) ga4Event(eventName, eventParams)
 
-    originalOnClick?.(e)
+    originalHandler?.(e)
   }
 
-  return { handleClick }
+  return { handleEvent }
 }

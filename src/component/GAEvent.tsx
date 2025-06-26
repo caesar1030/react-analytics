@@ -24,10 +24,10 @@ export function GAEvent({
   eventParams,
   enabled = true,
 }: PropsWithChildren<LogEventProps>) {
-  const { handleClick } = useGAEvent({ eventName, eventParams, enabled })
+  const { handleEvent } = useGAEvent({ eventName, eventParams, enabled })
   const child = Children.only(children) as ReactElement<ChildProps>
 
   return cloneElement(child, {
-    onClick: (e: MouseEvent<Element>) => handleClick(e, child.props.onClick),
+    onClick: (e: MouseEvent<Element>) => handleEvent(e, child.props.onClick),
   })
 }
