@@ -2,14 +2,14 @@ import type { GtagSetArgs, GtagConfigParams } from '@/core'
 import { useGASet } from '@/hook'
 import type { PropsWithChildren } from 'react'
 
-export function GASet<K extends GtagSetArgs>({
+export function GASet<K extends string>({
   children,
   args,
   params,
   enabled = true,
 }: PropsWithChildren<{
-  args: K
-  params: GtagConfigParams[K]
+  args: GtagSetArgs<K>
+  params: K extends keyof GtagConfigParams ? GtagConfigParams[K] : any
   enabled?: boolean
 }>) {
   useGASet({ args, params, enabled })
