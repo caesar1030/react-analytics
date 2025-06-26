@@ -78,7 +78,7 @@ export type RecommendedEventName =
   | 'post_score'
   | 'unlock_achievement'
 // NOTES: https://developers.google.com/tag-platform/gtagjs/reference?hl=ko#event
-export type GtagEventName = RecommendedEventName | string
+export type GtagEventName = RecommendedEventName | (string & {})
 export type GtagEventParams = { [key: string]: unknown }
 
 export type GtagSetArgs<T extends string> = keyof GtagConfigParams | T
