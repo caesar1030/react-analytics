@@ -40,4 +40,24 @@ describe('<GASet />', () => {
       enabled: true,
     })
   })
+
+  it('enabled가 false인 경우 useGASet 훅을 enabled가 false로 호출해야 한다.', () => {
+    render(
+      <GAProvider measurementId="G-TEST123">
+        <GASet
+          args={'allow_ad_personalization_signals'}
+          params={true}
+          enabled={false}
+        >
+          <div>child</div>
+        </GASet>
+      </GAProvider>,
+    )
+
+    expect(useGASet).toHaveBeenCalledWith({
+      args: 'allow_ad_personalization_signals',
+      params: true,
+      enabled: false,
+    })
+  })
 })

@@ -36,4 +36,18 @@ describe('<GAPageView />', () => {
 
     expect(useGAPageView).toHaveBeenCalled()
   })
+
+  it('enabled가 false인 경우 useGAPageView 훅을 enabled가 false로 호출해야 한다.', () => {
+    render(
+      <GAProvider measurementId="G-TEST123">
+        <GAPageView enabled={false}>
+          <div>child</div>
+        </GAPageView>
+      </GAProvider>,
+    )
+
+    expect(useGAPageView).toHaveBeenCalledWith({
+      enabled: false,
+    })
+  })
 })

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, it, beforeEach, vi } from 'vitest'
 import { GAProvider } from '@/provider/GAProvider'
-import { GAEvent } from '@/index'
+import { GAEvent, useGAEvent } from '@/index'
 
 const mockHandleEvent = vi.fn()
 vi.mock('@/hook/useGAEvent', () => ({
@@ -118,5 +118,31 @@ describe('<GAEvent />', () => {
       // NOTES: 자식 컴포넌트의 onClick 함수
       mockOnClick,
     )
+  })
+
+  it('enabled가 false인 경우 useGAEvent 훅을 enabled가 false로 호출해야 한다.', () => {
+    render(
+      <GAProvider measurementId="G-TEST123">
+        <GAEvent
+          eventName="add_to_cart"
+          eventParams={{
+            currency: 'KRW',
+            value: 25000,
+          }}
+          enabled={false}
+        >
+          <button>Add to Cart</button>
+        </GAEvent>
+      </GAProvider>,
+    )
+
+    expect(useGAEvent).toHaveBeenCalledWith({
+      eventName: 'add_to_cart',
+      eventParams: {
+        currency: 'KRW',
+        value: 25000,
+      },
+      enabled: false,
+    })
   })
 })

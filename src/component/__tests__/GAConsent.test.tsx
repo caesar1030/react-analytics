@@ -36,4 +36,24 @@ describe('<GAConsent />', () => {
 
     expect(useGAConsent).toHaveBeenCalled()
   })
+
+  it('enabled가 false인 경우 useGAConsent 훅을 enabled가 false로 호출해야 한다.', () => {
+    render(
+      <GAProvider measurementId="G-TEST123">
+        <GAConsent
+          args="default"
+          params={{ ad_personalization: 'granted' }}
+          enabled={false}
+        >
+          <div>child</div>
+        </GAConsent>
+      </GAProvider>,
+    )
+
+    expect(useGAConsent).toHaveBeenCalledWith({
+      args: 'default',
+      params: { ad_personalization: 'granted' },
+      enabled: false,
+    })
+  })
 })

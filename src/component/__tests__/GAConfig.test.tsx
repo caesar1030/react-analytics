@@ -36,4 +36,14 @@ describe('<GAConfig />', () => {
 
     expect(useGAConfig).toHaveBeenCalled()
   })
+
+  it('enabled가 false인 경우 useGAConfig 훅을 enabled가 false로 호출해야 한다.', () => {
+    render(
+      <GAProvider measurementId="G-TEST123">
+        <GAConfig config={{ page_title: 'title' }} enabled={false}>
+          <div>child</div>
+        </GAConfig>
+      </GAProvider>,
+    )
+  })
 })
