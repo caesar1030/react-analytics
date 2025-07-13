@@ -26,7 +26,7 @@ describe('useGASet', () => {
     expect(mockGa4Set).toHaveBeenCalledWith('allow_google_signals', true)
   })
 
-  it('enabled가 false인 경우 ga4Conset 메서드를 호출하지 않아야 한다.', () => {
+  it('enabled가 false인 경우 ga4Set 메서드를 호출하지 않아야 한다.', () => {
     renderHook(() =>
       useGASet({
         args: 'allow_google_signals',

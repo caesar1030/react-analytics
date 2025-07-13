@@ -45,5 +45,10 @@ describe('<GAConfig />', () => {
         </GAConfig>
       </GAProvider>,
     )
+
+    expect(useGAConfig).toHaveBeenCalledWith({
+      config: { page_title: 'title' },
+      enabled: false,
+    })
   })
 })
