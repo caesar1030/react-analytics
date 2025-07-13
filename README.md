@@ -19,7 +19,6 @@ yarn add @caesar/react-analytics
 npm install @caesar/react-analytics
 ```
 
-
 ## How To Use
 
 ### 1. Provider Setup
@@ -41,6 +40,7 @@ function App() {
 ### 2. Tracking Examples
 
 #### Page View Tracking
+
 The `GAPageView` component automatically tracks page views when the component mounts. This is useful for tracking specific pages or sections of your application.
 
 ```tsx
@@ -56,6 +56,7 @@ function ProductPage() {
 ```
 
 #### Event Tracking
+
 Use the `GAEvent` component to track user interactions like button clicks, form submissions, or any custom events. The component accepts event parameters that will be sent to Google Analytics.
 
 ```tsx
@@ -64,7 +65,7 @@ import { GAEvent } from 'react-analytics'
 function AddToCartButton() {
   return (
     <GAEvent
-      eventName='add_to_cart'
+      eventName="add_to_cart"
       eventParams={{
         currency: 'KRW',
         value: 25000,
@@ -76,9 +77,9 @@ function AddToCartButton() {
             item_category: 'Clothes',
             item_variant: 'Green',
             price: 25000,
-            quantity: 1
-          }
-        ]
+            quantity: 1,
+          },
+        ],
       }}
     >
       <button>Add to Cart</button>
@@ -88,6 +89,7 @@ function AddToCartButton() {
 ```
 
 #### Configuration
+
 The `GAConfig` component allows you to configure Google Analytics settings. You can use it to enable/disable features or set global parameters.
 
 ```tsx
@@ -106,13 +108,14 @@ function AnalyticsConfig() {
 ```
 
 #### Using Hooks
+
 For more complex scenarios, use the `useGAEvent` hook. This is particularly useful when you need to track events based on custom logic or user interactions.
 
 ```tsx
 import { useGAEvent } from 'react-analytics'
 
 function CustomAddToCartButton() {
-  const { handleClick } = useGAEvent({
+  const { handleEvent } = useGAEvent({
     eventName: 'add_to_cart',
     eventParams: {
       currency: 'KRW',
@@ -125,19 +128,19 @@ function CustomAddToCartButton() {
           item_category: 'Clothes',
           item_variant: 'Green',
           price: 25000,
-          quantity: 1
-        }
-      ]
+          quantity: 1,
+        },
+      ],
     },
   })
 
-  return <button onClick={handleClick}>Add to cart</button>
+  return <button onClick={handleEvent}>Add to cart</button>
 }
 ```
 
 ## Caveat
 
-The default value for the ```send_page_view``` option is ```false```. This is to track page views only on the pages you want to, without any configuration.
+The default value for the `send_page_view` option is `false`. This is to track page views only on the pages you want to, without any configuration.
 
 If you want to automatically collect page view from GA4, set page_view to true in your GA provider config settings. In this case, you should not use the PageView component, hooks.
 
@@ -146,11 +149,12 @@ import { GAProvider } from 'react-analytics'
 
 function App() {
   return (
-    <GAProvider 
-    measurementId="G-XXXXXXXXXX" 
-    config={{
-      send_page_view: true,
-    }}>
+    <GAProvider
+      measurementId="G-XXXXXXXXXX"
+      config={{
+        send_page_view: true,
+      }}
+    >
       <YourApp />
     </GAProvider>
   )
