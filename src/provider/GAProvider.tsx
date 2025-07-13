@@ -15,7 +15,10 @@ interface GAContextValue {
   ga4Event: (eventName: GtagEventName, eventParams: GtagEventParams) => void
   ga4Config: (config: GtagConfigParams) => void
   ga4Consent: (args: GtagConsentArg, params: GtagConsentParams) => void
-  ga4Set: <K extends GtagSetArgs>(args: K, params: GtagConfigParams[K]) => void
+  ga4Set: <K extends GtagSetArgs<string>>(
+    args: K,
+    params: K extends keyof GtagConfigParams ? GtagConfigParams[K] : any,
+  ) => void
 }
 
 const GAContext = createContext<GAContextValue | null>(null)

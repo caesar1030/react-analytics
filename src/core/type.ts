@@ -33,7 +33,7 @@ export interface GtagConfigParams {
 
   send_page_view?: boolean
 
-  // [key: string]: unknown;
+  debug_mode?: boolean
 }
 
 // NOTES:https://support.google.com/analytics/answer/9267735
